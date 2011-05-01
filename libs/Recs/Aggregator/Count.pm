@@ -47,7 +47,7 @@ sub short_usage
 Recs::Aggregator::register_aggregator('count', __PACKAGE__);
 Recs::Aggregator::register_aggregator('ct', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_ctor(__PACKAGE__, 'count');
-Recs::DomainLanguage::Registry::register_ctor(__PACKAGE__, 'ct');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'count');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'ct');
 
 1;

@@ -52,7 +52,7 @@ sub returns_record
 Recs::Aggregator::register_aggregator('firstrecord', __PACKAGE__);
 Recs::Aggregator::register_aggregator('firstrec', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_ctor(__PACKAGE__, 'firstrecord');
-Recs::DomainLanguage::Registry::register_ctor(__PACKAGE__, 'firstrec');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'firstrecord');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'firstrec');
 
 1;

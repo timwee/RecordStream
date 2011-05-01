@@ -21,15 +21,6 @@ sub new_node
     };
 }
 
-sub register_ctor
-{
-    my $pkg = shift;
-    my $token = shift;
-    my @types = @_;
-
-    return register_fn(sub { return $pkg->new(@_) }, $token, @types);
-}
-
 sub register_vfn
 {
     my $tgt = shift;
