@@ -7,7 +7,7 @@ use base qw(Recs::Accumulator Recs::Operation Recs::ScreenPrinter);
 
 use Recs::OutputStream;
 
-# TODO: zOMG!  This format is so ugly it hurts.  Think of something better.
+# TODO: amling, this format is so ugly it hurts.  Think of something better.
 
 sub init {
    my $this = shift;

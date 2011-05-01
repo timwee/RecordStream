@@ -5,14 +5,13 @@ use lib;
 
 use Recs::Aggregator::MapReduce::Field;
 use Recs::Aggregator;
+use Recs::DomainLanguage::Registry;
 
 use base 'Recs::Aggregator::MapReduce::Field';
 
-sub new
-{
-   my ($class, @args) = @_;
-   return $class->SUPER::new(@args);
-}
+#sub new -- passed through
+
+#sub new_from_valuation -- passed through
 
 sub reduce
 {
@@ -34,5 +33,7 @@ sub short_usage
 }
 
 Recs::Aggregator::register_aggregator('sum', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'sum', 'VALUATION');
 
 1;

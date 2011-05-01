@@ -8,11 +8,9 @@ use Recs::Aggregator;
 
 use base 'Recs::Aggregator::MapReduce::Field';
 
-sub new
-{
-   my ($class, @args) = @_;
-   return $class->SUPER::new(@args);
-}
+#sub new -- passed through
+
+#sub new_from_valuation -- passed through
 
 sub map_field
 {

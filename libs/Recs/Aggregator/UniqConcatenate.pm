@@ -4,17 +4,32 @@ use strict;
 use lib;
 
 use Recs::Aggregator;
+use Recs::DomainLanguage::Registry;
+use Recs::DomainLanguage::Valuation::KeySpec;
+
 use base qw(Recs::Aggregator::Aggregation);
 
 sub new
 {
-   my ($class, $delim, $field) = @_;
+   my $class = shift;
+   my $delim = shift;
+   my $field = shift;
+
+   return new_from_valuation($class, $delim, Recs::DomainLanguage::Valuation::KeySpec->new($field));
+}
+
+sub new_from_valuation
+{
+   my $class = shift;
+   my $delim = shift;
+   my $valuation = shift;
 
    my $this =
    {
-      'field' => $field,
+      'valuation' => $valuation,
       'delim' => $delim,
    };
+
    bless $this, $class;
 
    return $this;
@@ -53,7 +68,8 @@ sub combine
 {
    my ($this, $cookie, $record) = @_;
 
-   my $value = ${$record->guess_key_from_spec($this->{'field'})};
+   my $value = $this->{'valuation'}->evaluate_record($record);
+
    $cookie->{$value} = 1;
 
    return $cookie;
@@ -61,5 +77,8 @@ sub combine
 
 Recs::Aggregator::register_aggregator('uconcatenate', __PACKAGE__);
 Recs::Aggregator::register_aggregator('uconcat', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'uconcatenate', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'uconcat', 'SCALAR', 'VALUATION');
 
 1;

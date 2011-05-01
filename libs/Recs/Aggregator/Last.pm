@@ -4,15 +4,13 @@ use strict;
 use lib;
 
 use Recs::Aggregator::InjectInto::Field;
+use Recs::DomainLanguage::Registry;
+
 use base qw(Recs::Aggregator::InjectInto::Field);
 
-sub new
-{
-   my $class = shift;
-   my @args  = @_;
+#sub new -- passed through
 
-   return $class->SUPER::new(@args);
-}
+#sub new_from_valuation -- passed through
 
 sub combine_field
 {
@@ -36,5 +34,7 @@ sub long_usage
 }
 
 Recs::Aggregator::register_aggregator('last', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'last', 'VALUATION');
 
 1;

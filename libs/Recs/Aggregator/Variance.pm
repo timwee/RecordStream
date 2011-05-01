@@ -5,14 +5,13 @@ use lib;
 
 use Recs::Aggregator::Ord2Univariate;
 use Recs::Aggregator;
+use Recs::DomainLanguage::Registry;
 
 use base 'Recs::Aggregator::Ord2Univariate';
 
-sub new
-{
-   my ($class, @args) = @_;
-   return $class->SUPER::new(@args);
-}
+#sub new -- passed through
+
+#sub new_from_valuation -- passed through
 
 sub squish
 {
@@ -39,6 +38,9 @@ sub short_usage
 
 Recs::Aggregator::register_aggregator('var', __PACKAGE__);
 Recs::Aggregator::register_aggregator('variance', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'var', 'VALUATION');
+Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'variance', 'VALUATION');
 
 1;
 
