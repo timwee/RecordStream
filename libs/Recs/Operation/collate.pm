@@ -279,7 +279,7 @@ sub add_help_types {
 }
 
 sub usage {
-   return <<USAGE
+   return <<USAGE;
 Usage: recs-collate <args> [<files>]
    Collate records of input (or records from <files>) into output records.
 
@@ -321,9 +321,8 @@ Cubing:
    = ALL, y = 2} and {x = ALL, y = ALL}.
 
 Domain Lanuage Integration:
-USAGE
-   . Recs::DomainLanguage::short_usage()
-   . <<USAGE
+   If you want to programmatically specify aggregators, the recs domain
+   language is for you.
 
    Either aggregates or keys may be specified using the recs domain language.
    Both --dlkey and --dlaggregator require an options of the format
@@ -357,7 +356,6 @@ Examples:
    Produce a list of hosts in each datacenter, separated with a delimiter not normally possible
       recs-collate --key dc --dlaggregator "hosts=uconcat(', ', 'host')"
 USAGE
-   ;
 }
 
 1;

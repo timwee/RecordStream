@@ -4,31 +4,29 @@ use strict;
 use warnings;
 
 sub usage {
-   return "DOMAIN LANGUAGE\n" . short_usage() . long_usage();
-}
-
-sub short_usage {
    return <<HELP;
-   The normal mechanism for specifying e.g.  keys and aggregators allows one to
-   concisely instantiate the objects that back them in the platform and is
-   certainly the easiest way to use recs.  The record stream domain language
-   allows the creation of these objects in a programmatic way, with neither the
-   syntactic issues of the normal way nor the its guiding hand.
+DOMAIN LANGUAGE
+   The recs domain language was made to allow the programmatic specification of
+   aggregators.  As an example consider someone trying to collate data with a
+   large number of fields, all of which need to be aggregated the same way, say
+   a collection of times all of which need to be summed.  With the domain
+   language, they can use this:
 
-   The domain language is itself just PERL with a collection of library
-   functions for creating platform objects included.  Your favorite aggregators
-   are all here with constructors matching their normal token.  For convenience
-   of e.g.  last, aggregators are also included with a prefixed underscore.
+   --dlaggregator "for_field(qr/^time-/, 'sum(\\\$f))"
 
-   Below you can find documentation on all the "built in" functions.  Most
-   aggregators should be present with arguments comparable to their normal
-   instantiation arugments, but with keyspec parameters replaced with
-   valuations parameters.
-HELP
-}
+   for_field creates a very complicated aggregator that in turn will
+   instantiate other aggregators based on fields it finds matching the regex
+   /^time-/.  The code snippet, 'sum(\\\$f)', indicates that when these fields
+   are found a sum aggregator is made for each.
 
-sub long_usage {
-   return <<HELP;
+   By combining for_field with sum the user has avoided having to specify many,
+   many sum aggregators themselves.
+
+   The language is itself just PERL with a collection of library functions.
+   Your favorite aggregators are all here with the constructors you expect.
+   Because certain aggregator names conflict with PERL builtins, constructors
+   are also included prefixed with an underscore, e.g.  "_last".  Below you can
+   find documentation on all the other provided functions.
 
    for_field(qr/.../, '...')
       Takes a regex and a snippet of code.  Creates an aggregator that creates
@@ -38,18 +36,8 @@ sub long_usage {
       is the field).
 
       Example(s):
-         To aggregate the sums of all the fields beginning with "t"
-            for_field(qr/^t/, 'sum(\$f)')
-
-   rec()
-   record()
-      A valuation that just returns the entire record.
-
-   type_agg(obj)
-   type_scalar(obj)
-   type_val(obj)
-      Force the object into a specific type.  Can be used to force certain
-      upconversions (or avoid them).
+         To aggregate the sums of all the fields beginning with "time-"
+            for_field(qr/^time-/, 'sum(\$f)')
 
    valuation(sub { ... })
    val(sub { ... })
@@ -60,6 +48,17 @@ sub long_usage {
          To get the square of the "x" field:
             val(sub{ \$[0]->{x} ** 2 })
 HELP
+
+# TODO: amling, when we actually have examples/needs for these
+#   rec()
+#   record()
+#      A valuation that just returns the entire record.
+#
+#   type_agg(obj)
+#   type_scalar(obj)
+#   type_val(obj)
+#      Force the object into a specific type.  Can be used to force certain
+#      upconversions (or avoid them).
 }
 
 1;
