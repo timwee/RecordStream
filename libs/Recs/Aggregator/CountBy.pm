@@ -3,16 +3,14 @@ package Recs::Aggregator::CountBy;
 use strict;
 use warnings;
 
+use Recs::Aggregator::InjectInto::Field;
+use Recs::DomainLanguage::Registry;
+
 use base qw(Recs::Aggregator::InjectInto::Field);
 
-sub new
-{
-   my $class = shift;
-   my $field = shift;
+#sub new -- passed through
 
-   my $this = $class->SUPER::new($field);
-   return $this;
-}
+#sub new_from_valuation -- passed through
 
 sub initial
 {
@@ -63,5 +61,8 @@ sub argct
 
 Recs::Aggregator::register_aggregator('countby', __PACKAGE__);
 Recs::Aggregator::register_aggregator('cb', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'countby', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'cb', 'VALUATION');
 
 1;

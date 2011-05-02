@@ -4,13 +4,13 @@ use strict;
 use lib;
 
 use Recs::Aggregator::InjectInto::Field;
+use Recs::DomainLanguage::Registry;
+
 use base qw(Recs::Aggregator::InjectInto::Field);
 
-sub new
-{
-   my $class = shift;
-   return $class->SUPER::new(@_);
-}
+#sub new -- passed through
+
+#sub new_from_valuation -- passed through
 
 sub initial {
    return {};
@@ -62,5 +62,7 @@ USAGE
 }
 
 Recs::Aggregator::register_aggregator('mode', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'mode', 'VALUATION');
 
 1;

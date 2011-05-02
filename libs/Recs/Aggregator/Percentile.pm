@@ -4,6 +4,8 @@ use strict;
 use lib;
 
 use Recs::Aggregator::InjectInto::Field;
+use Recs::DomainLanguage::Registry;
+
 use base qw(Recs::Aggregator::InjectInto::Field);
 
 sub new
@@ -13,6 +15,18 @@ sub new
    my $field      = shift;
 
    my $this = $class->SUPER::new($field);
+   $this->{'percentile'} = $percentile;
+
+   return $this;
+}
+
+sub new_from_valuation
+{
+   my $class      = shift;
+   my $percentile = shift;
+   my $valuation  = shift;
+
+   my $this = $class->SUPER::new_from_valuation($valuation);
    $this->{'percentile'} = $percentile;
 
    return $this;
@@ -76,5 +90,8 @@ sub argct
 
 Recs::Aggregator::register_aggregator('percentile', __PACKAGE__);
 Recs::Aggregator::register_aggregator('perc', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'percentile', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'perc', 'SCALAR', 'VALUATION');
 
 1;

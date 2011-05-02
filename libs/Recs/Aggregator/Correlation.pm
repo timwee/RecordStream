@@ -5,14 +5,13 @@ use lib;
 
 use Recs::Aggregator::Ord2Bivariate;
 use Recs::Aggregator;
+use Recs::DomainLanguage::Registry;
 
 use base 'Recs::Aggregator::Ord2Bivariate';
 
-sub new
-{
-   my ($class, @args) = @_;
-   return $class->SUPER::new(@args);
-}
+#sub new -- passed through
+
+#sub new_from_valuation -- passed through
 
 sub squish
 {
@@ -39,6 +38,9 @@ sub short_usage
 
 Recs::Aggregator::register_aggregator('corr', __PACKAGE__);
 Recs::Aggregator::register_aggregator('correlation', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'corr', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'correlation', 'VALUATION', 'VALUATION');
 
 1;
 

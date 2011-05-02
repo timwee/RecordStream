@@ -3,6 +3,9 @@ package Recs::Aggregator::FirstRecord;
 use strict;
 use lib;
 
+use Recs::Aggregator::InjectInto;
+use Recs::DomainLanguage::Registry;
+
 use base qw(Recs::Aggregator::InjectInto);
 
 sub new
@@ -48,5 +51,8 @@ sub returns_record
 
 Recs::Aggregator::register_aggregator('firstrecord', __PACKAGE__);
 Recs::Aggregator::register_aggregator('firstrec', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'firstrecord');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'firstrec');
 
 1;

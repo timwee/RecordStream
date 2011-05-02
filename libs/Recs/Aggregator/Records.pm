@@ -5,6 +5,7 @@ use lib;
 
 use Recs::Aggregator::MapReduce;
 use Recs::Aggregator;
+use Recs::DomainLanguage::Registry;
 
 use base 'Recs::Aggregator::MapReduce';
 
@@ -59,5 +60,8 @@ sub returns_record
 
 Recs::Aggregator::register_aggregator('records', __PACKAGE__);
 Recs::Aggregator::register_aggregator('recs', __PACKAGE__);
+
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'records');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'recs');
 
 1;
