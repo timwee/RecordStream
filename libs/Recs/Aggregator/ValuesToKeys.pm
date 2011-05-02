@@ -54,7 +54,7 @@ sub argct {
 Recs::Aggregator::register_aggregator('valuestokeys', __PACKAGE__);
 Recs::Aggregator::register_aggregator('vk', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'valuestokeys', 'VALUATION', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'vk', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'valuestokeys', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'vk', 'VALUATION', 'VALUATION');
 
 1;

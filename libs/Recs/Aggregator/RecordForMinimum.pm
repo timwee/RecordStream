@@ -91,9 +91,9 @@ Recs::Aggregator::register_aggregator('recforminimum', __PACKAGE__);
 Recs::Aggregator::register_aggregator('recordformin', __PACKAGE__);
 Recs::Aggregator::register_aggregator('recordforminimum', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'recformin', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'recforminimum', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'recordformin', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'recordforminimum', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'recformin', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'recforminimum', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'recordformin', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'recordforminimum', 'VALUATION');
 
 1;

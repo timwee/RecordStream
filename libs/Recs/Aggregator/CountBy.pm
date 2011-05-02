@@ -62,7 +62,7 @@ sub argct
 Recs::Aggregator::register_aggregator('countby', __PACKAGE__);
 Recs::Aggregator::register_aggregator('cb', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'countby', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'cb', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'countby', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'cb', 'VALUATION');
 
 1;

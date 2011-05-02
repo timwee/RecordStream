@@ -35,6 +35,6 @@ sub long_usage
 
 Recs::Aggregator::register_aggregator('last', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'last', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'last', 'VALUATION');
 
 1;

@@ -22,7 +22,7 @@ sub new_node
     };
 }
 
-sub register_vfn
+sub register
 {
     my $tgt = shift;
     my $meth = shift;

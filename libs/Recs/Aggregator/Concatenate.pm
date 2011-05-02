@@ -74,7 +74,7 @@ sub argct
 Recs::Aggregator::register_aggregator('concatenate', __PACKAGE__);
 Recs::Aggregator::register_aggregator('concat', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'concatenate', 'SCALAR', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'concat', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'concatenate', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'concat', 'SCALAR', 'VALUATION');
 
 1;

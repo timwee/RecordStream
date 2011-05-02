@@ -37,7 +37,7 @@ sub short_usage
 Recs::Aggregator::register_aggregator('average', __PACKAGE__);
 Recs::Aggregator::register_aggregator('avg', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'average', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'avg', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'average', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'avg', 'VALUATION');
 
 1;

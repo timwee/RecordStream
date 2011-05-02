@@ -39,8 +39,8 @@ sub short_usage
 Recs::Aggregator::register_aggregator('corr', __PACKAGE__);
 Recs::Aggregator::register_aggregator('correlation', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'corr', 'VALUATION', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'correlation', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'corr', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'correlation', 'VALUATION', 'VALUATION');
 
 1;
 

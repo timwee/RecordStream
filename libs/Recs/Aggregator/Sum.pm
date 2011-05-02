@@ -34,6 +34,6 @@ sub short_usage
 
 Recs::Aggregator::register_aggregator('sum', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'sum', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'sum', 'VALUATION');
 
 1;

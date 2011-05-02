@@ -15,9 +15,9 @@ sub _identity
     return $obj;
 }
 
-Recs::DomainLanguage::Registry::register_vfn(\&_identity, 'type_agg', 'AGGREGATOR');
-Recs::DomainLanguage::Registry::register_vfn(\&_identity, 'type_valuation', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(\&_identity, 'type_scalar', 'SCALAR');
+Recs::DomainLanguage::Registry::register(\&_identity, 'type_agg', 'AGGREGATOR');
+Recs::DomainLanguage::Registry::register(\&_identity, 'type_valuation', 'VALUATION');
+Recs::DomainLanguage::Registry::register(\&_identity, 'type_scalar', 'SCALAR');
 
 sub _rec_valuation
 {
@@ -26,8 +26,8 @@ sub _rec_valuation
     return Recs::DomainLanguage::Valuation::Sub->new(sub { return $_[0]; });
 }
 
-Recs::DomainLanguage::Registry::register_vfn(\&_rec_valuation, 'record');
-Recs::DomainLanguage::Registry::register_vfn(\&_rec_valuation, 'rec');
+Recs::DomainLanguage::Registry::register(\&_rec_valuation, 'record');
+Recs::DomainLanguage::Registry::register(\&_rec_valuation, 'rec');
 
 sub _raw_valuation
 {
@@ -42,7 +42,7 @@ sub _raw_valuation
     return Recs::DomainLanguage::Valuation::KeySpec->new($v);
 }
 
-Recs::DomainLanguage::Registry::register_vfn(\&_raw_valuation, 'valuation', 'SCALAR');
-Recs::DomainLanguage::Registry::register_vfn(\&_raw_valuation, 'val', 'SCALAR');
+Recs::DomainLanguage::Registry::register(\&_raw_valuation, 'valuation', 'SCALAR');
+Recs::DomainLanguage::Registry::register(\&_raw_valuation, 'val', 'SCALAR');
 
 1;

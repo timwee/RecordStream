@@ -39,8 +39,8 @@ sub short_usage
 Recs::Aggregator::register_aggregator('var', __PACKAGE__);
 Recs::Aggregator::register_aggregator('variance', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'var', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'variance', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'var', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'variance', 'VALUATION');
 
 1;
 

@@ -43,7 +43,7 @@ sub long_usage
 Recs::Aggregator::register_aggregator('maximum', __PACKAGE__);
 Recs::Aggregator::register_aggregator('max', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'maximum', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'max', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'maximum', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'max', 'VALUATION');
 
 1;

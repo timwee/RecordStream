@@ -114,7 +114,7 @@ sub argct
 Recs::Aggregator::register_aggregator('percentilemap', __PACKAGE__);
 Recs::Aggregator::register_aggregator('percmap', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'percentilemap', 'SCALAR', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'percmap', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'percentilemap', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'percmap', 'SCALAR', 'VALUATION');
 
 1;

@@ -38,7 +38,7 @@ sub short_usage
 
 Recs::Aggregator::register_aggregator('stddev', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'stddev', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'stddev', 'VALUATION');
 
 1;
 

@@ -61,7 +61,7 @@ sub returns_record
 Recs::Aggregator::register_aggregator('records', __PACKAGE__);
 Recs::Aggregator::register_aggregator('recs', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'records');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'recs');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'records');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'recs');
 
 1;

@@ -91,7 +91,7 @@ sub argct
 Recs::Aggregator::register_aggregator('percentile', __PACKAGE__);
 Recs::Aggregator::register_aggregator('perc', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'percentile', 'SCALAR', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'perc', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'percentile', 'SCALAR', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'perc', 'SCALAR', 'VALUATION');
 
 1;

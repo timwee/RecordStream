@@ -39,8 +39,8 @@ sub short_usage
 Recs::Aggregator::register_aggregator('cov', __PACKAGE__);
 Recs::Aggregator::register_aggregator('covariance', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'cov', 'VALUATION', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'covariance', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'cov', 'VALUATION', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'covariance', 'VALUATION', 'VALUATION');
 
 1;
 

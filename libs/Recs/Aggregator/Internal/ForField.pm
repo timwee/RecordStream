@@ -72,7 +72,7 @@ sub squish
    return $cookie;
 }
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'for_field', 'SCALAR', 'SNIPPET');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'for_field', 'SCALAR', 'SNIPPET');
 # TODO: amling, allow subref to take field, return aggregator
 
 1;

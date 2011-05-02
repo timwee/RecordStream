@@ -50,7 +50,7 @@ sub argct
 Recs::Aggregator::register_aggregator('lastrecord', __PACKAGE__);
 Recs::Aggregator::register_aggregator('lastrec', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'lastrecord');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new', 'lastrec');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'lastrecord');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new', 'lastrec');
 
 1;

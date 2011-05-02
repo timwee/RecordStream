@@ -63,6 +63,6 @@ USAGE
 
 Recs::Aggregator::register_aggregator('mode', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'mode', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'mode', 'VALUATION');
 
 1;

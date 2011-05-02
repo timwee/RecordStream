@@ -43,7 +43,7 @@ sub long_usage
 Recs::Aggregator::register_aggregator('minimum', __PACKAGE__);
 Recs::Aggregator::register_aggregator('min', __PACKAGE__);
 
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'minimum', 'VALUATION');
-Recs::DomainLanguage::Registry::register_vfn(__PACKAGE__, 'new_from_valuation', 'min', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'minimum', 'VALUATION');
+Recs::DomainLanguage::Registry::register(__PACKAGE__, 'new_from_valuation', 'min', 'VALUATION');
 
 1;
