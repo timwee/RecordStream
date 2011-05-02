@@ -348,14 +348,14 @@ Examples:
       recs-collate --key date,hour --aggregator count
    Finds the maximum latency for each date, hour pair
       recs-collate --key date,hour --aggregator worst_latency=max,latency
-   Produce a list of hosts in each datacenter.
-      recs-collate --key dc --dlaggregator "hosts=uconcat(', ', 'host')"
-   Sum all time fields
-      recs-collate --key ... --dlaggregator "times=for_field(qr/^t/, 'sum(\\\$f)')"
-   Find the median value of x+y in records
-      recs-collate --dlaggregator 'median=perc(50, val(sub{\$_[0]->{x}+\$_[0]->{y}}))'
+   Sum all fields beginning with "time-"
+      recs-collate --key ... --dlaggregator "times=for_field(qr/^time-/, 'sum(\\\$f)')"
+   Find the modal value of x+y in records
+      recs-collate --dlaggregator 'mode=mode(val(sub{\$_[0]->{x}+\$_[0]->{y}}))'
    Count people by first three letters of their name
-      recs-collate --dlkey 'tla=val(sub{substr(\$_[0]->{name},0,3)})'
+      recs-collate --dlkey 'tla=val(sub{substr(\$_[0]->{name},0,3)})' -a ct
+   Produce a list of hosts in each datacenter, separated with a delimiter not normally possible
+      recs-collate --key dc --dlaggregator "hosts=uconcat(', ', 'host')"
 USAGE
    ;
 }
