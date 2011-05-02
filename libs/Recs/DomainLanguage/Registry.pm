@@ -14,7 +14,8 @@ sub new_node
 {
     return
     {
-        'SUBREF' => undef,
+        'CLASS' => undef,
+        'METHOD' => undef,
         'EPSILONS' => {},
         'NORMALS' => {},
         'REPEATABLE' => undef,
@@ -25,15 +26,6 @@ sub register_vfn
 {
     my $tgt = shift;
     my $meth = shift;
-    my $token = shift;
-    my @types = @_;
-
-    return register_fn(sub { return $tgt->$meth(@_) }, $token, @types);
-}
-
-sub register_fn
-{
-    my $subref = shift;
     my $token = shift;
     my @types = @_;
 
@@ -53,12 +45,13 @@ sub register_fn
         }
     }
 
-    if($p->{'SUBREF'})
+    if($p->{'CLASS'})
     {
         die "Collision in type registry at $token(" . join(", ", @types) . ")";
     }
 
-    $p->{'SUBREF'} = $subref;
+    $p->{'CLASS'} = $tgt;
+    $p->{'METHOD'} = $meth;
 }
 
 sub get_tokens
@@ -155,10 +148,11 @@ sub evaluate_aux
     if(!@values_left)
     {
         # this is our stop
-        my $subref = $registry_pos->{'SUBREF'};
-        if($subref)
+        my $class = $registry_pos->{'CLASS'};
+        my $method = $registry_pos->{'METHOD'};
+        if($class)
         {
-            push @$results_ref, $subref->(@$built_args);
+            push @$results_ref, $class->$method(@$built_args);
         }
         return;
     }
