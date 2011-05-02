@@ -81,6 +81,13 @@ RecordShell idea:
 
 Keith's super crazy ideas below
 
+CR todo
+    unify executors
+    better valuation literals
+        sub valuation as "(( {{x}} + {{y}} ))"
+        keyspec valuation as "{{x}}" (kind of short for "(( {{x}} ))")
+        will have to parse (()) as balances to avoid fucking e.g.  "if((a) && (b))"
+        would rather [[]] but that's needed syntactically
 refactor keys nightmare once and for all, this will include domain language keys (and help on them!)
 decollate / deaggregators
 fix die w/in getopt
